@@ -3,17 +3,98 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-background-dark text-text-main font-sans antialiased;
+    @apply bg-background-dark text-text-muted antialiased font-sans;
+    min-height: max(884px, 100dvh);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(15, 15, 18, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+
+  .input-dark {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+  }
+
+  .input-dark:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 1px #8b5cf6;
+  }
+
+  .script-area::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .script-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .script-area::-webkit-scrollbar-thumb {
+    background-color: #3f3f46;
+    border-radius: 20px;
   }
 }
 
 @layer utilities {
-  .glass-panel {
-    @apply bg-surface-dark/70 backdrop-blur-xl border border-white/10 rounded-[40px] shadow-2xl;
+  .ambient-glow {
+    @apply fixed top-0 left-1/2 -translate-x-1/2 w-full h-[400px] pointer-events-none z-0;
+    background: radial-gradient(circle at top, rgba(147, 51, 234, 0.15), transparent 70%);
   }
 
-  .text-shadow-glow {
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+    }
+
+    50% {
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+    }
+  }
+
+  .animate-glow {
+    animation: pulse-glow 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
   }
 }

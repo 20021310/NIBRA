@@ -4,6 +4,7 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    darkMode: "class",
     theme: {
         extend: {
             colors: {
@@ -11,8 +12,8 @@ export default {
                 "primary-dark": "#7e22ce",
                 "primary-light": "#c084fc",
                 "primary-glow": "rgba(168, 85, 247, 0.4)",
-                secondary: "#a78bfa",
-                accent: "#d8b4fe",
+                "secondary": "#a78bfa",
+                "accent": "#d8b4fe",
                 "background-dark": "#020204",
                 "background-base": "#020205",
                 "background-card": "#0f0f16",
@@ -38,8 +39,9 @@ export default {
                 'glow-strong': '0 0 25px rgba(139, 92, 246, 0.4)',
                 'glow-hover': '0 0 30px -5px rgba(168, 85, 247, 0.6)',
             },
-            backdropBlur: {
-                xs: '2px',
+            backgroundImage: {
+                'purple-gradient': 'linear-gradient(to right, #7c3aed, #9333ea)',
+                'gradient-glow': 'radial-gradient(circle at top, rgba(147, 51, 234, 0.15), transparent 70%)',
             }
         },
     },
